@@ -200,3 +200,19 @@ def create_demo_data():
         print(f"\n❌ Error populating demo data: {e}")
         frappe.db.rollback()
 
+
+def cleanup_workspace():
+    """
+    Force deletes the 'Travel Tour' workspace from the database to clear UI crashes.
+    """
+    print("🧹 Cleaning up broken workspace data...")
+    if frappe.db.exists("Workspace", "Travel Tour"):
+        frappe.delete_doc("Workspace", "Travel Tour", ignore_permissions=True, force=True)
+        frappe.db.commit()
+        print("✅ 'Travel Tour' workspace deleted from database.")
+    else:
+        print("ℹ️ No 'Travel Tour' workspace found in database.")
+    
+    frappe.clear_cache()
+    print("✨ Cache cleared. Sidebar should restore on refresh.")
+
