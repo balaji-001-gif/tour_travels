@@ -1,103 +1,171 @@
 import frappe
+from frappe.utils import today, add_days, getdate
+import random
 
 def create_demo_data():
     """
-    Populates standard demo data for the Travel Tour application
-    so users don't have to manually create the base entities.
+    Populates extensive demo data (5-10 records per DocType) for the Travel Tour application.
     """
     frappe.flags.in_test = True
 
     try:
-        # 1. Create Destinations
-        print("Creating Destinations...")
+        # ────────── 1. DESTINATIONS (10) ──────────
+        print("Creating 10 Destinations...")
         destinations = [
-            {"doctype": "Destination", "destination_name": "Dubai", "country": "United Arab Emirates", "status": "Active"},
-            {"doctype": "Destination", "destination_name": "Maldives", "country": "Maldives", "status": "Active"},
-            {"doctype": "Destination", "destination_name": "Switzerland", "country": "Switzerland", "status": "Active"}
+            ("Dubai", "United Arab Emirates"), ("Maldives", "Maldives"), ("Switzerland", "Switzerland"),
+            ("Thailand", "Thailand"), ("Singapore", "Singapore"), ("Malaysia", "Malaysia"),
+            ("Bali", "Indonesia"), ("Paris", "France"), ("London", "United Kingdom"), ("New York", "United States")
         ]
         
-        for d in destinations:
-            if not frappe.db.exists("Destination", d["destination_name"]):
-                frappe.get_doc(d).insert(ignore_permissions=True)
+        for dest, country in destinations:
+            if not frappe.db.exists("Destination", dest):
+                frappe.get_doc({
+                    "doctype": "Destination", "destination_name": dest, "country": country, "status": "Active"
+                }).insert(ignore_permissions=True)
 
-        # 2. Create Tour Packages
-        print("Creating Tour Packages...")
-        packages = [
-            {
-                "doctype": "Tour Package",
-                "package_name": "Majestic Dubai Escape",
-                "destination": "Dubai",
-                "duration_days": 5,
-                "duration_nights": 4,
-                "status": "Active",
-                "inclusion": "Hotel, Meals, Desert Safari, Burj Khalifa",
-                "exclusion": "Flights, Visa",
-                "itinerary": [
-                    {"day_number": 1, "title": "Arrival", "description": "Airport transfer to hotel."},
-                    {"day_number": 2, "title": "City Tour", "description": "Burj Khalifa and Dubai Mall."},
-                    {"day_number": 3, "title": "Desert Safari", "description": "Dune bashing and BBQ dinner."}
-                ],
-                "pricing": [
-                    {"pax_range": "1", "price_per_pax": 1200},
-                    {"pax_range": "2-4", "price_per_pax": 1000}
-                ]
-            },
-            {
-                "doctype": "Tour Package",
-                "package_name": "Romantic Maldives Retreat",
-                "destination": "Maldives",
-                "duration_days": 4,
-                "duration_nights": 3,
-                "status": "Active",
-                "inclusion": "Water Villa, Seaplane transfer, All-inclusive meals",
-                "itinerary": [
-                    {"day_number": 1, "title": "Arrival", "description": "Seaplane to resort."},
-                    {"day_number": 2, "title": "Leisure", "description": "Snorkeling and spa."}
-                ]
-            }
-        ]
+        # ────────── 2. TOUR PACKAGES (10) ──────────
+        print("Creating 10 Tour Packages...")
+        packages = []
+        for i, (dest, country) in enumerate(destinations):
+            pkg_name = f"Signature {dest} Premium Tour"
+            if not frappe.db.exists("Tour Package", pkg_name):
+                doc = frappe.get_doc({
+                    "doctype": "Tour Package",
+                    "package_name": pkg_name,
+                    "destination": dest,
+                    "duration_days": random.randint(4, 7),
+                    "duration_nights": random.randint(3, 6),
+                    "status": "Active",
+                    "inclusion": "Premium Hotel, Daily Breakfast, Guided Tours, Transfers",
+                    "exclusion": "Flights, Visa, Personal Expenses",
+                    "itinerary": [
+                        {"day_number": 1, "title": "Arrival", "description": f"Welcome to {dest}. Airport transfer to luxury hotel."},
+                        {"day_number": 2, "title": "City Highlights", "description": f"Exploring the premium zones of {dest}."},
+                        {"day_number": 3, "title": "Leisure & Shopping", "description": "Free time for leisure activities."}
+                    ],
+                    "pricing": [
+                        {"pax_range": "1-2", "price_per_pax": random.randint(1000, 2000)},
+                        {"pax_range": "3-5", "price_per_pax": random.randint(800, 1500)}
+                    ]
+                }).insert(ignore_permissions=True)
+                packages.append(doc)
 
-        for p in packages:
-            if not frappe.db.exists("Tour Package", p["package_name"]):
-                frappe.get_doc(p).insert(ignore_permissions=True)
+        # ────────── 3. TRAVEL LEADS (10) ──────────
+        print("Creating 10 Travel Leads...")
+        lead_names = ["Alice Smith", "Bob Johnson", "Charlie Davis", "Diana Prince", "Eve Adams", 
+                      "Frank Castle", "Grace Hopper", "Hank Pym", "Ivy Fern", "Jack Sparrow"]
+        
+        leads = []
+        for i, name in enumerate(lead_names):
+            if not frappe.db.exists("Travel Lead", {"email_id": f"client{i}@example.com"}):
+                doc = frappe.get_doc({
+                    "doctype": "Travel Lead",
+                    "customer_name": name,
+                    "email_id": f"client{i}@example.com",
+                    "mobile_no": f"+100000000{i}",
+                    "suggested_package": f"Signature {destinations[i][0]} Premium Tour",
+                    "pax_count": random.randint(1, 4),
+                    "status": random.choice(["Open", "Contacted", "Proposal Sent", "Converted"]),
+                    "source": random.choice(["Website", "Referral", "Social Media"])
+                }).insert(ignore_permissions=True)
+                leads.append(doc)
 
-        # 3. Create Travel Leads
-        print("Creating Demo Lead...")
-        if not frappe.db.exists("Travel Lead", {"email_id": "demo@example.com"}):
-            frappe.get_doc({
-                "doctype": "Travel Lead",
-                "customer_name": "Demo Client",
-                "email_id": "demo@example.com",
-                "mobile_no": "+1234567890",
-                "suggested_package": "Majestic Dubai Escape",
-                "pax_count": 2,
-                "status": "Open",
-                "source": "Website"
-            }).insert(ignore_permissions=True)
+        # ────────── 4. SUPPLIER CONTRACTS (5) ──────────
+        print("Creating 5 Supplier Contracts...")
+        suppliers = ["Marriott International", "Hilton Hotels", "Emirates Transport", "Skyline Tours", "Oceanic Voyages"]
+        
+        for i, supp in enumerate(suppliers):
+            if not frappe.db.exists("Supplier Contract", {"supplier_name": supp}):
+                frappe.get_doc({
+                    "doctype": "Supplier Contract",
+                    "supplier_name": supp,
+                    "service_type": "Hotel" if i < 2 else "Transport",
+                    "contract_start_date": today(),
+                    "contract_end_date": add_days(today(), 365),
+                    "contract_status": "Active"
+                }).insert(ignore_permissions=True)
 
+        # ────────── 5. VISA CONFIGS (5) ──────────
+        print("Creating 5 Visa Country Configs...")
+        for dest, country in destinations[:5]:
+            if not frappe.db.exists("Visa Country Config", country):
+                frappe.get_doc({
+                    "doctype": "Visa Country Config",
+                    "country": country,
+                    "visa_type": "Tourist",
+                    "processing_time_days": 5,
+                    "base_fee": random.randint(50, 150),
+                    "required_documents": [
+                        {"document_name": "Passport Copy - Front & Back", "is_mandatory": 1},
+                        {"document_name": "Photograph (White Background)", "is_mandatory": 1},
+                        {"document_name": "6 Months Bank Statement", "is_mandatory": 0}
+                    ]
+                }).insert(ignore_permissions=True)
 
-        # 4. Create Visa Country Config
-        print("Creating Visa Configs...")
-        visa_configs = [
-            {
-                "doctype": "Visa Country Config",
-                "country": "United Arab Emirates",
-                "visa_type": "Tourist",
-                "processing_time_days": 3,
-                "base_fee": 100,
-                "required_documents": [
-                    {"document_name": "Passport Copy - Front & Back", "is_mandatory": 1},
-                    {"document_name": "Passport Size Photograph", "is_mandatory": 1}
-                ]
-            }
-        ]
-        for vc in visa_configs:
-            if not frappe.db.exists("Visa Country Config", vc["country"]):
-                frappe.get_doc(vc).insert(ignore_permissions=True)
-
+        # ────────── 6. BOOKINGS (5) ──────────
+        print("Creating 5 Confirmed Bookings...")
+        for i in range(5):
+            lead = leads[i]
+            if not frappe.db.exists("Booking", {"travel_lead": lead.name}):
+                bk = frappe.get_doc({
+                    "doctype": "Booking",
+                    "customer_name": lead.customer_name,
+                    "email_id": lead.email_id,
+                    "travel_lead": lead.name,
+                    "tour_package": lead.suggested_package,
+                    "travel_start_date": add_days(today(), random.randint(10, 30)),
+                    "total_pax": lead.pax_count,
+                    "booking_status": "Confirmed",
+                    "passengers": [
+                        {"passenger_name": lead.customer_name, "age": 30, "passport_number": f"P{1000+i}X"},
+                        {"passenger_name": f"{lead.customer_name} Partner", "age": 28, "passport_number": f"P{2000+i}Y"}
+                    ] if lead.pax_count > 1 else [
+                        {"passenger_name": lead.customer_name, "age": 30, "passport_number": f"P{1000+i}X"}
+                    ]
+                }).insert(ignore_permissions=True)
+                
+                # Create related operational docs
+                print(f"Creating Operational Docs for Booking: {bk.name}")
+                
+                # 7. VISA APPLICATION
+                frappe.get_doc({
+                    "doctype": "Visa Application",
+                    "booking": bk.name,
+                    "passenger_name": lead.customer_name,
+                    "country": destinations[i][1],
+                    "status": "Document Collection",
+                    "visa_type": "Tourist",
+                    "application_date": today(),
+                    "expected_arrival_date": add_days(today(), 5)
+                }).insert(ignore_permissions=True)
+                
+                # 8. HOTEL ALLOTMENT
+                frappe.get_doc({
+                    "doctype": "Hotel Allotment",
+                    "booking": bk.name,
+                    "hotel_name": suppliers[i % 2],
+                    "check_in_date": bk.travel_start_date,
+                    "check_out_date": add_days(bk.travel_start_date, 3),
+                    "status": "Requested",
+                    "rooms": [
+                        {"room_type": "Deluxe Double", "quantity": 1, "occupancy": "Double" if lead.pax_count > 1 else "Single"}
+                    ]
+                }).insert(ignore_permissions=True)
+                
+                # 9. TRIP RUN SHEET
+                frappe.get_doc({
+                    "doctype": "Trip Run Sheet",
+                    "booking": bk.name,
+                    "tour_start_date": bk.travel_start_date,
+                    "tour_end_date": add_days(bk.travel_start_date, 5),
+                    "status": "Draft",
+                    "daily_schedule": [
+                        {"day_number": 1, "date": bk.travel_start_date, "activity": "Airport Transfer"}
+                    ]
+                }).insert(ignore_permissions=True)
 
         frappe.db.commit()
-        print("\n✅ Success! Demo Data has been fully populated in the site.")
+        print("\n✅ Success! 5 to 10 records for EVERY major DocType have been generated!")
         
     except Exception as e:
         print(f"\n❌ Error populating demo data: {e}")
