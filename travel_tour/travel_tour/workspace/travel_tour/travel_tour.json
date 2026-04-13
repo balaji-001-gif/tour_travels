@@ -1,5 +1,6 @@
 {
  "charts": [],
+ "content": "[{\"id\":\"WkH7YhTr4p\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Tours &amp; Packages</span>\",\"col\":12}},{\"id\":\"Jd9s3KpwG2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Destination\",\"col\":4}},{\"id\":\"Ln8s2KpwM1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Package\",\"col\":4}},{\"id\":\"HkH7YhTr4p\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Bookings</span>\",\"col\":12}},{\"id\":\"Jd9s3KpwG3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Booking\",\"col\":4}},{\"id\":\"Ln8s2KpwM2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Lead\",\"col\":4}},{\"id\":\"HdH7YhTr4p\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Visa Management</span>\",\"col\":12}},{\"id\":\"Jd9s3KpwG4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visa Application\",\"col\":4}},{\"id\":\"Ln8s2KpwM3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visa Country Config\",\"col\":4}}]",
  "creation": "2024-04-10 12:00:00.000000",
  "doctype": "Workspace",
  "for_user": "",
@@ -8,104 +9,7 @@
  "is_default": 0,
  "is_standard": 1,
  "label": "Travel Tour",
- "links": [
-  {
-   "dependencies": "",
-   "label": "Tours & Packages",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Destination",
-   "label": "Destination",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Tour Package",
-   "label": "Tour Package",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "label": "Bookings & CRM",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Booking",
-   "label": "Booking",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Travel Lead",
-   "label": "Travel Lead",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "label": "Visa Management",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Visa Application",
-   "label": "Visa Application",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Visa Country Config",
-   "label": "Visa Country Config",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "label": "Operations",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 1,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Trip Run Sheet",
-   "label": "Trip Run Sheet",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Guide Allocation",
-   "label": "Guide Allocation",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  }
- ],
+ "links": [],
  "modified": "2024-04-10 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Travel Tour",
@@ -119,5 +23,48 @@
  "owner": "Administrator",
  "public": 1,
  "sequence_id": 1,
- "shortcuts": []
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Destination",
+   "link_to": "Destination",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Tour Package",
+   "link_to": "Tour Package",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Booking",
+   "link_to": "Booking",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Travel Lead",
+   "link_to": "Travel Lead",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Visa Application",
+   "link_to": "Visa Application",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Visa Country Config",
+   "link_to": "Visa Country Config",
+   "type": "DocType"
+  }
+ ]
 }
