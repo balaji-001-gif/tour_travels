@@ -65,7 +65,7 @@ def create_demo_data():
                     "mobile_no": f"+100000000{i}",
                     "suggested_package": f"Signature {destinations[i][0]} Premium Tour",
                     "pax_count": random.randint(1, 4),
-                    "status": random.choice(["Open", "Contacted", "Proposal Sent", "Converted"]),
+                    "status": random.choice(["Open", "Interested", "converted", "Lost"]),
                     "source": random.choice(["Website", "Referral", "Social Media"])
                 }).insert(ignore_permissions=True)
                 leads.append(doc)
