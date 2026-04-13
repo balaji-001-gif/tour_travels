@@ -1,39 +1,210 @@
 {
  "charts": [],
- "content": "[{\"id\":\"WkH7YhTr4p\",\"type\":\"header\",\"data\":{\"text\":\"Operational Management\",\"level\":4,\"col\":12}},{\"id\":\"sc1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Booking\",\"col\":3}},{\"id\":\"sc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Lead\",\"col\":3}},{\"id\":\"header2\",\"type\":\"header\",\"data\":{\"text\":\"Masters\",\"level\":4,\"col\":12}},{\"id\":\"sc3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Package\",\"col\":3}},{\"id\":\"sc4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Destination\",\"col\":3}}]",
- "creation": "2024-04-10 12:00:00.000000",
+ "content": "[{\"id\":\"header-crm\",\"type\":\"header\",\"data\":{\"text\":\"CRM & Leads\",\"col\":12}},{\"id\":\"travel-lead-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Lead\",\"col\":3}},{\"id\":\"header-booking\",\"type\":\"header\",\"data\":{\"text\":\"Bookings\",\"col\":12}},{\"id\":\"booking-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Booking\",\"col\":3}},{\"id\":\"tour-package-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Package\",\"col\":3}},{\"id\":\"header-visa\",\"type\":\"header\",\"data\":{\"text\":\"Visa Processing\",\"col\":12}},{\"id\":\"visa-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visa Application\",\"col\":3}},{\"id\":\"header-ops\",\"type\":\"header\",\"data\":{\"text\":\"Operations\",\"col\":12}},{\"id\":\"hotel-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hotel Allotment\",\"col\":3}},{\"id\":\"runsheet-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Trip Run Sheet\",\"col\":3}},{\"id\":\"guide-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Guide Allocation\",\"col\":3}},{\"id\":\"header-config\",\"type\":\"header\",\"data\":{\"text\":\"Configuration\",\"col\":12}},{\"id\":\"supplier-contract-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Contract\",\"col\":3}},{\"id\":\"settings-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Travels Settings\",\"col\":3}}]",
+ "creation": "2024-01-01 00:00:00.000000",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
  "doctype": "Workspace",
- "icon": "briefcase",
- "indicator_color": "green",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "travel",
+ "idx": 0,
  "is_default": 0,
- "is_standard": 1,
- "label": "Travel Tour",
- "links": [],
- "modified": "2024-04-10 12:00:00.000000",
- "module": "Travel Tour",
- "name": "Travel Tour",
+ "is_hidden": 0,
+ "label": "Tour Travels",
+ "links": [
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Travel Lead",
+   "link_count": 0,
+   "link_to": "Travel Lead",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Booking",
+   "link_count": 0,
+   "link_to": "Booking",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tour Package",
+   "link_count": 0,
+   "link_to": "Tour Package",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Application",
+   "link_count": 0,
+   "link_to": "Visa Application",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hotel Allotment",
+   "link_count": 0,
+   "link_to": "Hotel Allotment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trip Run Sheet",
+   "link_count": 0,
+   "link_to": "Trip Run Sheet",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Guide Allocation",
+   "link_count": 0,
+   "link_to": "Guide Allocation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Supplier Contract",
+   "link_count": 0,
+   "link_to": "Supplier Contract",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Country Config",
+   "link_count": 0,
+   "link_to": "Visa Country Config",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Tour Travels Settings",
+   "link_count": 0,
+   "link_to": "Tour Travels Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "module": "Tour Travels",
+ "name": "Tour Travels",
+ "onboarding": "",
+ "parent_page": "",
  "public": 1,
- "sequence_id": 1,
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 1.0,
  "shortcuts": [
   {
-   "label": "Booking",
-   "link_to": "Booking",
-   "type": "DocType"
-  },
-  {
+   "color": "Blue",
+   "doc_view": "",
+   "format": "{} Leads",
    "label": "Travel Lead",
    "link_to": "Travel Lead",
+   "stats_filter": "{\"status\": [\"!=\", \"Converted\"]}",
    "type": "DocType"
   },
   {
+   "color": "Green",
+   "doc_view": "",
+   "format": "{} Bookings",
+   "label": "Booking",
+   "link_to": "Booking",
+   "stats_filter": "{\"status\": \"Confirmed\"}",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "",
+   "format": "{} Packages",
    "label": "Tour Package",
    "link_to": "Tour Package",
+   "stats_filter": "{\"is_active\": 1}",
    "type": "DocType"
   },
   {
-   "label": "Destination",
-   "link_to": "Destination",
+   "color": "Orange",
+   "doc_view": "",
+   "format": "{} Pending",
+   "label": "Visa Application",
+   "link_to": "Visa Application",
+   "stats_filter": "{\"status\": [\"in\", [\"Draft\", \"Documents Collecting\", \"Submitted to Embassy\"]]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Hotel Allotment",
+   "link_to": "Hotel Allotment",
+   "type": "DocType"
+  },
+  {
+   "color": "Teal",
+   "doc_view": "",
+   "label": "Trip Run Sheet",
+   "link_to": "Trip Run Sheet",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "",
+   "label": "Guide Allocation",
+   "link_to": "Guide Allocation",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "",
+   "label": "Supplier Contract",
+   "link_to": "Supplier Contract",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "",
+   "label": "Tour Travels Settings",
+   "link_to": "Tour Travels Settings",
    "type": "DocType"
   }
- ]
+ ],
+ "title": "Tour Travels"
 }
