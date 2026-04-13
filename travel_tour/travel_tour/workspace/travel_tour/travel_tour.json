@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"header-crm\",\"type\":\"header\",\"data\":{\"text\":\"CRM & Leads\",\"col\":12}},{\"id\":\"travel-lead-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Lead\",\"col\":3}},{\"id\":\"header-booking\",\"type\":\"header\",\"data\":{\"text\":\"Bookings\",\"col\":12}},{\"id\":\"booking-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Booking\",\"col\":3}},{\"id\":\"tour-package-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Package\",\"col\":3}},{\"id\":\"header-visa\",\"type\":\"header\",\"data\":{\"text\":\"Visa Processing\",\"col\":12}},{\"id\":\"visa-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visa Application\",\"col\":3}},{\"id\":\"header-ops\",\"type\":\"header\",\"data\":{\"text\":\"Operations\",\"col\":12}},{\"id\":\"hotel-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Hotel Allotment\",\"col\":3}},{\"id\":\"runsheet-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Trip Run Sheet\",\"col\":3}},{\"id\":\"guide-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Guide Allocation\",\"col\":3}},{\"id\":\"header-config\",\"type\":\"header\",\"data\":{\"text\":\"Configuration\",\"col\":12}},{\"id\":\"supplier-contract-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Supplier Contract\",\"col\":3}},{\"id\":\"settings-shortcut\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Travels Settings\",\"col\":3}}]",
+ "content": "[{\"id\":\"section-crm\",\"type\":\"header\",\"data\":{\"text\":\"CRM & Leads\",\"col\":12}},{\"id\":\"card-travel-lead\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Lead\",\"col\":4}},{\"id\":\"section-booking\",\"type\":\"header\",\"data\":{\"text\":\"Bookings\",\"col\":12}},{\"id\":\"card-booking\",\"type\":\"card\",\"data\":{\"card_name\":\"Booking\",\"col\":4}},{\"id\":\"card-tour-package\",\"type\":\"card\",\"data\":{\"card_name\":\"Tour Package\",\"col\":4}},{\"id\":\"section-visa\",\"type\":\"header\",\"data\":{\"text\":\"Visa Processing\",\"col\":12}},{\"id\":\"card-visa-application\",\"type\":\"card\",\"data\":{\"card_name\":\"Visa Application\",\"col\":4}},{\"id\":\"card-visa-country-config\",\"type\":\"card\",\"data\":{\"card_name\":\"Visa Country Config\",\"col\":4}},{\"id\":\"section-ops\",\"type\":\"header\",\"data\":{\"text\":\"Operations\",\"col\":12}},{\"id\":\"card-hotel-allotment\",\"type\":\"card\",\"data\":{\"card_name\":\"Hotel Allotment\",\"col\":4}},{\"id\":\"card-trip-run-sheet\",\"type\":\"card\",\"data\":{\"card_name\":\"Trip Run Sheet\",\"col\":4}},{\"id\":\"card-guide-allocation\",\"type\":\"card\",\"data\":{\"card_name\":\"Guide Allocation\",\"col\":4}},{\"id\":\"card-supplier-contract\",\"type\":\"card\",\"data\":{\"card_name\":\"Supplier Contract\",\"col\":4}},{\"id\":\"section-config\",\"type\":\"header\",\"data\":{\"text\":\"Configuration\",\"col\":12}},{\"id\":\"card-tour-travels-settings\",\"type\":\"card\",\"data\":{\"card_name\":\"Tour Travels Settings\",\"col\":4}}]",
  "creation": "2024-01-01 00:00:00.000000",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -23,7 +23,31 @@
    "link_to": "Travel Lead",
    "link_type": "DocType",
    "onboard": 1,
+   "type": "Card Break",
+   "title": "CRM & Leads"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Travel Lead",
+   "link_count": 0,
+   "link_to": "Travel Lead",
+   "link_type": "DocType",
+   "onboard": 1,
    "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Booking",
+   "link_count": 0,
+   "link_to": "Booking",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Card Break",
+   "title": "Bookings"
   },
   {
    "dependencies": "",
@@ -56,7 +80,42 @@
    "link_to": "Visa Application",
    "link_type": "DocType",
    "onboard": 0,
+   "type": "Card Break",
+   "title": "Visa Processing"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Application",
+   "link_count": 0,
+   "link_to": "Visa Application",
+   "link_type": "DocType",
+   "onboard": 0,
    "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Country Config",
+   "link_count": 0,
+   "link_to": "Visa Country Config",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Hotel Allotment",
+   "link_count": 0,
+   "link_to": "Hotel Allotment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break",
+   "title": "Operations"
   },
   {
    "dependencies": "",
@@ -106,12 +165,13 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Visa Country Config",
+   "label": "Tour Travels Settings",
    "link_count": 0,
-   "link_to": "Visa Country Config",
+   "link_to": "Tour Travels Settings",
    "link_type": "DocType",
    "onboard": 0,
-   "type": "Link"
+   "type": "Card Break",
+   "title": "Configuration"
   },
   {
    "dependencies": "",
@@ -125,10 +185,12 @@
    "type": "Link"
   }
  ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
  "module": "Tour Travels",
  "name": "Tour Travels",
- "onboarding": "",
- "parent_page": "",
+ "naming_rule": "Expression (make_autoname)",
+ "owner": "Administrator",
  "public": 1,
  "restrict_to_domain": "",
  "roles": [],
@@ -137,7 +199,7 @@
   {
    "color": "Blue",
    "doc_view": "",
-   "format": "{} Leads",
+   "format": "{} Open",
    "label": "Travel Lead",
    "link_to": "Travel Lead",
    "stats_filter": "{\"status\": [\"!=\", \"Converted\"]}",
@@ -146,7 +208,7 @@
   {
    "color": "Green",
    "doc_view": "",
-   "format": "{} Bookings",
+   "format": "{} Confirmed",
    "label": "Booking",
    "link_to": "Booking",
    "stats_filter": "{\"status\": \"Confirmed\"}",
@@ -155,7 +217,7 @@
   {
    "color": "Purple",
    "doc_view": "",
-   "format": "{} Packages",
+   "format": "{} Active",
    "label": "Tour Package",
    "link_to": "Tour Package",
    "stats_filter": "{\"is_active\": 1}",
