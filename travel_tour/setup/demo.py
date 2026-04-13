@@ -114,17 +114,27 @@ def create_demo_data():
         print("Creating 5 Confirmed Bookings...")
         for i in range(5):
             lead = leads[i]
+            
+            # Ensure Customer exists
+            if not frappe.db.exists("Customer", lead.customer_name):
+                frappe.get_doc({
+                    "doctype": "Customer",
+                    "customer_name": lead.customer_name,
+                    "customer_group": "All Customer Groups",
+                    "customer_type": "Individual",
+                    "territory": "All Territories"
+                }).insert(ignore_permissions=True)
+
             if not frappe.db.exists("Booking", {"travel_lead": lead.name}):
                 bk = frappe.get_doc({
                     "doctype": "Booking",
-                    "customer_name": lead.customer_name,
-                    "email_id": lead.email_id,
+                    "customer": lead.customer_name,
                     "travel_lead": lead.name,
                     "tour_package": lead.suggested_package,
-                    "travel_start_date": add_days(today(), random.randint(10, 30)),
+                    "departure_date": add_days(today(), random.randint(10, 30)),
                     "total_pax": lead.pax_count,
                     "booking_status": "Confirmed",
-                    "passengers": [
+                    "pax_details": [
                         {"passenger_name": lead.customer_name, "age": 30, "passport_number": f"P{1000+i}X"},
                         {"passenger_name": f"{lead.customer_name} Partner", "age": 28, "passport_number": f"P{2000+i}Y"}
                     ] if lead.pax_count > 1 else [
@@ -152,8 +162,8 @@ def create_demo_data():
                     "doctype": "Hotel Allotment",
                     "booking": bk.name,
                     "hotel_name": suppliers[i % 2],
-                    "check_in_date": bk.travel_start_date,
-                    "check_out_date": add_days(bk.travel_start_date, 3),
+                    "check_in_date": bk.departure_date,
+                    "check_out_date": add_days(bk.departure_date, 3),
                     "status": "Requested",
                     "rooms": [
                         {"room_type": "Deluxe Double", "quantity": 1, "occupancy": "Double" if lead.pax_count > 1 else "Single"}
@@ -164,11 +174,11 @@ def create_demo_data():
                 frappe.get_doc({
                     "doctype": "Trip Run Sheet",
                     "booking": bk.name,
-                    "tour_start_date": bk.travel_start_date,
-                    "tour_end_date": add_days(bk.travel_start_date, 5),
+                    "tour_start_date": bk.departure_date,
+                    "tour_end_date": add_days(bk.departure_date, 5),
                     "status": "Draft",
                     "daily_schedule": [
-                        {"day_number": 1, "date": bk.travel_start_date, "activity": "Airport Transfer"}
+                        {"day_number": 1, "date": bk.departure_date, "activity": "Airport Transfer"}
                     ]
                 }).insert(ignore_permissions=True)
 
