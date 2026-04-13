@@ -36,16 +36,16 @@ def create_demo_data():
                     "duration_days": random.randint(4, 7),
                     "duration_nights": random.randint(3, 6),
                     "status": "Active",
-                    "inclusion": "Premium Hotel, Daily Breakfast, Guided Tours, Transfers",
-                    "exclusion": "Flights, Visa, Personal Expenses",
+                    "tour_type": "International",
+                    "description": "Premium Hotel, Daily Breakfast, Guided Tours, Transfers",
                     "itinerary": [
                         {"day_number": 1, "title": "Arrival", "description": f"Welcome to {dest}. Airport transfer to luxury hotel."},
                         {"day_number": 2, "title": "City Highlights", "description": f"Exploring the premium zones of {dest}."},
                         {"day_number": 3, "title": "Leisure & Shopping", "description": "Free time for leisure activities."}
                     ],
-                    "pricing": [
-                        {"pax_range": "1-2", "price_per_pax": random.randint(1000, 2000)},
-                        {"pax_range": "3-5", "price_per_pax": random.randint(800, 1500)}
+                    "pricing_table": [
+                        {"min_pax": 1, "max_pax": 2, "per_person_price": random.randint(1000, 2000)},
+                        {"min_pax": 3, "max_pax": 10, "per_person_price": random.randint(800, 1500)}
                     ]
                 }).insert(ignore_permissions=True)
                 packages.append(doc)
