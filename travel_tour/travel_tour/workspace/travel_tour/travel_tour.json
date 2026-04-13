@@ -1,0 +1,39 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"WkH7YhTr4p\",\"type\":\"header\",\"data\":{\"text\":\"Operational Management\",\"level\":4,\"col\":12}},{\"id\":\"sc1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Booking\",\"col\":3}},{\"id\":\"sc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Travel Lead\",\"col\":3}},{\"id\":\"header2\",\"type\":\"header\",\"data\":{\"text\":\"Masters\",\"level\":4,\"col\":12}},{\"id\":\"sc3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tour Package\",\"col\":3}},{\"id\":\"sc4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Destination\",\"col\":3}}]",
+ "creation": "2024-04-10 12:00:00.000000",
+ "doctype": "Workspace",
+ "icon": "briefcase",
+ "indicator_color": "green",
+ "is_default": 0,
+ "is_standard": 1,
+ "label": "Travel Tour",
+ "links": [],
+ "modified": "2024-04-10 12:00:00.000000",
+ "module": "Travel Tour",
+ "name": "Travel Tour",
+ "public": 1,
+ "sequence_id": 1,
+ "shortcuts": [
+  {
+   "label": "Booking",
+   "link_to": "Booking",
+   "type": "DocType"
+  },
+  {
+   "label": "Travel Lead",
+   "link_to": "Travel Lead",
+   "type": "DocType"
+  },
+  {
+   "label": "Tour Package",
+   "link_to": "Tour Package",
+   "type": "DocType"
+  },
+  {
+   "label": "Destination",
+   "link_to": "Destination",
+   "type": "DocType"
+  }
+ ]
+}
