@@ -75,14 +75,22 @@ def create_demo_data():
         suppliers = ["Marriott International", "Hilton Hotels", "Emirates Transport", "Skyline Tours", "Oceanic Voyages"]
         
         for i, supp in enumerate(suppliers):
-            if not frappe.db.exists("Supplier Contract", {"supplier_name": supp}):
+            # Ensure the core Supplier exists first
+            if not frappe.db.exists("Supplier", supp):
+                frappe.get_doc({
+                    "doctype": "Supplier",
+                    "supplier_name": supp,
+                    "supplier_group": "All Supplier Groups"
+                }).insert(ignore_permissions=True)
+
+            if not frappe.db.exists("Supplier Contract", {"supplier": supp}):
                 frappe.get_doc({
                     "doctype": "Supplier Contract",
+                    "supplier": supp,
                     "supplier_name": supp,
-                    "service_type": "Hotel" if i < 2 else "Transport",
+                    "cost_per_pax": random.randint(100, 500),
                     "contract_start_date": today(),
-                    "contract_end_date": add_days(today(), 365),
-                    "contract_status": "Active"
+                    "contract_end_date": add_days(today(), 365)
                 }).insert(ignore_permissions=True)
 
         # ────────── 5. VISA CONFIGS (5) ──────────
