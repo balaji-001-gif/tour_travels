@@ -146,39 +146,40 @@ def create_demo_data():
                 print(f"Creating Operational Docs for Booking: {bk.name}")
                 
                 # 7. VISA APPLICATION
+                print(f"Creating Visa App for: {lead.customer_name}")
                 frappe.get_doc({
                     "doctype": "Visa Application",
                     "booking": bk.name,
-                    "passenger_name": lead.customer_name,
-                    "country": destinations[i][1],
-                    "status": "Document Collection",
+                    "applicant_name": lead.customer_name,
+                    "destination_country": destinations[i][1],
+                    "status": "Pending Documents",
                     "visa_type": "Tourist",
-                    "application_date": today(),
-                    "expected_arrival_date": add_days(today(), 5)
+                    "departure_date": bk.departure_date,
+                    "submission_deadline": add_days(today(), 5)
                 }).insert(ignore_permissions=True)
                 
                 # 8. HOTEL ALLOTMENT
+                print(f"Creating Hotel Allotment for: {suppliers[i % 2]}")
                 frappe.get_doc({
                     "doctype": "Hotel Allotment",
-                    "booking": bk.name,
-                    "hotel_name": suppliers[i % 2],
-                    "check_in_date": bk.departure_date,
-                    "check_out_date": add_days(bk.departure_date, 3),
-                    "status": "Requested",
+                    "supplier": suppliers[i % 2],
+                    "from_date": bk.departure_date,
+                    "to_date": add_days(bk.departure_date, 3),
                     "rooms": [
-                        {"room_type": "Deluxe Double", "quantity": 1, "occupancy": "Double" if lead.pax_count > 1 else "Single"}
+                        {"room_type": "Standard Double", "quantity": 1}
                     ]
                 }).insert(ignore_permissions=True)
                 
                 # 9. TRIP RUN SHEET
+                print(f"Creating Run Sheet for: {bk.name}")
                 frappe.get_doc({
                     "doctype": "Trip Run Sheet",
                     "booking": bk.name,
-                    "tour_start_date": bk.departure_date,
-                    "tour_end_date": add_days(bk.departure_date, 5),
-                    "status": "Draft",
-                    "daily_schedule": [
-                        {"day_number": 1, "date": bk.departure_date, "activity": "Airport Transfer"}
+                    "customer": lead.customer_name,
+                    "departure_date": bk.departure_date,
+                    "total_pax": lead.pax_count,
+                    "activities": [
+                        {"activity_time": "09:00:00", "activity_name": "Airport Pick-up", "description": "Meet and greet at arrivals."}
                     ]
                 }).insert(ignore_permissions=True)
 
