@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"section-crm\",\"type\":\"header\",\"data\":{\"text\":\"CRM & Leads\",\"col\":12}},{\"id\":\"card-travel-lead\",\"type\":\"card\",\"data\":{\"card_name\":\"Travel Lead\",\"col\":4}},{\"id\":\"section-booking\",\"type\":\"header\",\"data\":{\"text\":\"Bookings\",\"col\":12}},{\"id\":\"card-booking\",\"type\":\"card\",\"data\":{\"card_name\":\"Booking\",\"col\":4}},{\"id\":\"card-tour-package\",\"type\":\"card\",\"data\":{\"card_name\":\"Tour Package\",\"col\":4}},{\"id\":\"section-visa\",\"type\":\"header\",\"data\":{\"text\":\"Visa Processing\",\"col\":12}},{\"id\":\"card-visa-application\",\"type\":\"card\",\"data\":{\"card_name\":\"Visa Application\",\"col\":4}},{\"id\":\"card-visa-country-config\",\"type\":\"card\",\"data\":{\"card_name\":\"Visa Country Config\",\"col\":4}},{\"id\":\"section-ops\",\"type\":\"header\",\"data\":{\"text\":\"Operations\",\"col\":12}},{\"id\":\"card-hotel-allotment\",\"type\":\"card\",\"data\":{\"card_name\":\"Hotel Allotment\",\"col\":4}},{\"id\":\"card-trip-run-sheet\",\"type\":\"card\",\"data\":{\"card_name\":\"Trip Run Sheet\",\"col\":4}},{\"id\":\"card-guide-allocation\",\"type\":\"card\",\"data\":{\"card_name\":\"Guide Allocation\",\"col\":4}},{\"id\":\"card-supplier-contract\",\"type\":\"card\",\"data\":{\"card_name\":\"Supplier Contract\",\"col\":4}},{\"id\":\"section-config\",\"type\":\"header\",\"data\":{\"text\":\"Configuration\",\"col\":12}},{\"id\":\"card-tour-travels-settings\",\"type\":\"card\",\"data\":{\"card_name\":\"Tour Travels Settings\",\"col\":4}}]",
+ "content": "[]",
  "creation": "2024-01-01 00:00:00.000000",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -14,14 +14,12 @@
  "is_hidden": 0,
  "label": "Tour Travels",
  "links": [
+
   {
-   "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Travel Lead",
+   "label": "CRM & Leads",
    "link_count": 0,
-   "link_to": "Travel Lead",
-   "link_type": "DocType",
    "onboard": 1,
    "type": "Card Break",
    "title": "CRM & Leads"
@@ -41,10 +39,19 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Booking",
+   "label": "Destination",
    "link_count": 0,
-   "link_to": "Booking",
+   "link_to": "Destination",
    "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bookings",
+   "link_count": 0,
    "onboard": 1,
    "type": "Card Break",
    "title": "Bookings"
@@ -75,10 +82,19 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Visa Application",
+   "label": "Cancellation Policy",
    "link_count": 0,
-   "link_to": "Visa Application",
+   "link_to": "Cancellation Policy",
    "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Processing",
+   "link_count": 0,
    "onboard": 0,
    "type": "Card Break",
    "title": "Visa Processing"
@@ -109,10 +125,41 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Hotel Allotment",
+   "label": "Visa Agent",
    "link_count": 0,
-   "link_to": "Hotel Allotment",
+   "link_to": "Visa Agent",
    "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Fee Billing",
+   "link_count": 0,
+   "link_to": "Visa Fee Billing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Visa Delivery Log",
+   "link_count": 0,
+   "link_to": "Visa Delivery Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operations",
+   "link_count": 0,
    "onboard": 0,
    "type": "Card Break",
    "title": "Operations"
@@ -161,14 +208,12 @@
    "onboard": 0,
    "type": "Link"
   },
+
   {
-   "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Tour Travels Settings",
+   "label": "Configuration",
    "link_count": 0,
-   "link_to": "Tour Travels Settings",
-   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break",
    "title": "Configuration"
@@ -177,19 +222,19 @@
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Tour Travels Settings",
+   "label": "Travel Tour Settings",
    "link_count": 0,
-   "link_to": "Tour Travels Settings",
+   "link_to": "Travel Tour Settings",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
+
  ],
  "modified": "2024-01-01 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Tour Travels",
  "name": "Tour Travels",
- "naming_rule": "Expression (make_autoname)",
  "owner": "Administrator",
  "public": 1,
  "restrict_to_domain": "",
@@ -198,7 +243,6 @@
  "shortcuts": [
   {
    "color": "Blue",
-   "doc_view": "",
    "format": "{} Open",
    "label": "Travel Lead",
    "link_to": "Travel Lead",
@@ -207,7 +251,6 @@
   },
   {
    "color": "Green",
-   "doc_view": "",
    "format": "{} Confirmed",
    "label": "Booking",
    "link_to": "Booking",
@@ -216,7 +259,6 @@
   },
   {
    "color": "Purple",
-   "doc_view": "",
    "format": "{} Active",
    "label": "Tour Package",
    "link_to": "Tour Package",
@@ -225,7 +267,6 @@
   },
   {
    "color": "Orange",
-   "doc_view": "",
    "format": "{} Pending",
    "label": "Visa Application",
    "link_to": "Visa Application",
@@ -234,37 +275,32 @@
   },
   {
    "color": "Blue",
-   "doc_view": "",
    "label": "Hotel Allotment",
    "link_to": "Hotel Allotment",
    "type": "DocType"
   },
   {
    "color": "Teal",
-   "doc_view": "",
    "label": "Trip Run Sheet",
    "link_to": "Trip Run Sheet",
    "type": "DocType"
   },
   {
    "color": "Gray",
-   "doc_view": "",
    "label": "Guide Allocation",
    "link_to": "Guide Allocation",
    "type": "DocType"
   },
   {
-   "color": "Gray",
-   "doc_view": "",
-   "label": "Supplier Contract",
-   "link_to": "Supplier Contract",
+   "color": "Red",
+   "label": "Visa Fee Billing",
+   "link_to": "Visa Fee Billing",
    "type": "DocType"
   },
   {
    "color": "Gray",
-   "doc_view": "",
-   "label": "Tour Travels Settings",
-   "link_to": "Tour Travels Settings",
+   "label": "Supplier Contract",
+   "link_to": "Supplier Contract",
    "type": "DocType"
   }
  ],
