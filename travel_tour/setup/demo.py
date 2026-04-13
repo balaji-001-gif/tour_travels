@@ -9,6 +9,16 @@ def create_demo_data():
     frappe.flags.in_test = True
 
     try:
+        # 0. Ensure base items for allotments
+        if not frappe.db.exists("Item", "Standard Double"):
+            frappe.get_doc({
+                "doctype": "Item",
+                "item_code": "Standard Double",
+                "item_name": "Standard Double Room",
+                "item_group": "All Item Groups",
+                "is_stock_item": 0
+            }).insert(ignore_permissions=True)
+
         # ────────── 1. DESTINATIONS (10) ──────────
         print("Creating 10 Destinations...")
         destinations = [
