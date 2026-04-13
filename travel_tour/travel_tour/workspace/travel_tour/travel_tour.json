@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[]",
+ "content": "[{\"id\": \"cb-crm\", \"type\": \"card\", \"data\": {\"card_name\": \"CRM & Leads\", \"col\": 12}}, {\"id\": \"cb-bookings\", \"type\": \"card\", \"data\": {\"card_name\": \"Bookings\", \"col\": 12}}, {\"id\": \"cb-visa\", \"type\": \"card\", \"data\": {\"card_name\": \"Visa Processing\", \"col\": 12}}, {\"id\": \"cb-ops\", \"type\": \"card\", \"data\": {\"card_name\": \"Operations\", \"col\": 12}}, {\"id\": \"cb-config\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 12}}]",
  "creation": "2024-01-01 00:00:00.000000",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -14,19 +14,20 @@
  "is_hidden": 0,
  "label": "Tour Travels",
  "links": [
-
   {
    "hidden": 0,
+   "idx": 1,
    "is_query_report": 0,
    "label": "CRM & Leads",
    "link_count": 0,
    "onboard": 1,
-   "type": "Card Break",
-   "title": "CRM & Leads"
+   "title": "CRM & Leads",
+   "type": "Card Break"
   },
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 2,
    "is_query_report": 0,
    "label": "Travel Lead",
    "link_count": 0,
@@ -38,6 +39,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 3,
    "is_query_report": 0,
    "label": "Destination",
    "link_count": 0,
@@ -46,19 +48,20 @@
    "onboard": 1,
    "type": "Link"
   },
-
   {
    "hidden": 0,
+   "idx": 4,
    "is_query_report": 0,
    "label": "Bookings",
    "link_count": 0,
    "onboard": 1,
-   "type": "Card Break",
-   "title": "Bookings"
+   "title": "Bookings",
+   "type": "Card Break"
   },
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 5,
    "is_query_report": 0,
    "label": "Booking",
    "link_count": 0,
@@ -70,6 +73,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 6,
    "is_query_report": 0,
    "label": "Tour Package",
    "link_count": 0,
@@ -81,6 +85,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 7,
    "is_query_report": 0,
    "label": "Cancellation Policy",
    "link_count": 0,
@@ -89,19 +94,20 @@
    "onboard": 0,
    "type": "Link"
   },
-
   {
    "hidden": 0,
+   "idx": 8,
    "is_query_report": 0,
    "label": "Visa Processing",
    "link_count": 0,
    "onboard": 0,
-   "type": "Card Break",
-   "title": "Visa Processing"
+   "title": "Visa Processing",
+   "type": "Card Break"
   },
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 9,
    "is_query_report": 0,
    "label": "Visa Application",
    "link_count": 0,
@@ -113,6 +119,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 10,
    "is_query_report": 0,
    "label": "Visa Country Config",
    "link_count": 0,
@@ -124,6 +131,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 11,
    "is_query_report": 0,
    "label": "Visa Agent",
    "link_count": 0,
@@ -135,6 +143,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 12,
    "is_query_report": 0,
    "label": "Visa Fee Billing",
    "link_count": 0,
@@ -146,6 +155,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 13,
    "is_query_report": 0,
    "label": "Visa Delivery Log",
    "link_count": 0,
@@ -154,19 +164,20 @@
    "onboard": 0,
    "type": "Link"
   },
-
   {
    "hidden": 0,
+   "idx": 14,
    "is_query_report": 0,
    "label": "Operations",
    "link_count": 0,
    "onboard": 0,
-   "type": "Card Break",
-   "title": "Operations"
+   "title": "Operations",
+   "type": "Card Break"
   },
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 15,
    "is_query_report": 0,
    "label": "Hotel Allotment",
    "link_count": 0,
@@ -178,6 +189,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 16,
    "is_query_report": 0,
    "label": "Trip Run Sheet",
    "link_count": 0,
@@ -189,6 +201,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 17,
    "is_query_report": 0,
    "label": "Guide Allocation",
    "link_count": 0,
@@ -200,6 +213,7 @@
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 18,
    "is_query_report": 0,
    "label": "Supplier Contract",
    "link_count": 0,
@@ -208,19 +222,20 @@
    "onboard": 0,
    "type": "Link"
   },
-
   {
    "hidden": 0,
+   "idx": 19,
    "is_query_report": 0,
    "label": "Configuration",
    "link_count": 0,
    "onboard": 0,
-   "type": "Card Break",
-   "title": "Configuration"
+   "title": "Configuration",
+   "type": "Card Break"
   },
   {
    "dependencies": "",
    "hidden": 0,
+   "idx": 20,
    "is_query_report": 0,
    "label": "Travel Tour Settings",
    "link_count": 0,
@@ -229,11 +244,10 @@
    "onboard": 0,
    "type": "Link"
   }
-
  ],
  "modified": "2024-01-01 00:00:00.000000",
  "modified_by": "Administrator",
- "module": "Tour Travels",
+ "module": "Travel Tour",
  "name": "Tour Travels",
  "owner": "Administrator",
  "public": 1,
