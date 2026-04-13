@@ -96,7 +96,7 @@ def create_demo_data():
         # ────────── 5. VISA CONFIGS (5) ──────────
         print("Creating 5 Visa Country Configs...")
         for dest, country in destinations[:5]:
-            if not frappe.db.exists("Visa Country Config", country):
+            if not frappe.db.exists("Visa Country Config", {"country": country, "visa_type": "Tourist"}):
                 frappe.get_doc({
                     "doctype": "Visa Country Config",
                     "country": country,
