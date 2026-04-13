@@ -135,10 +135,10 @@ def create_demo_data():
                     "total_pax": lead.pax_count,
                     "booking_status": "Confirmed",
                     "pax_details": [
-                        {"passenger_name": lead.customer_name, "age": 30, "passport_number": f"P{1000+i}X"},
-                        {"passenger_name": f"{lead.customer_name} Partner", "age": 28, "passport_number": f"P{2000+i}Y"}
+                        {"pax_name": lead.customer_name, "pax_age": 30, "passport_number": f"P{1000+i}X"},
+                        {"pax_name": f"{lead.customer_name} Partner", "pax_age": 28, "passport_number": f"P{2000+i}Y"}
                     ] if lead.pax_count > 1 else [
-                        {"passenger_name": lead.customer_name, "age": 30, "passport_number": f"P{1000+i}X"}
+                        {"pax_name": lead.customer_name, "pax_age": 30, "passport_number": f"P{1000+i}X"}
                     ]
                 }).insert(ignore_permissions=True)
                 
