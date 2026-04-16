@@ -8,8 +8,8 @@ class TravelLead(Document):
 
     def assign_consultant_round_robin(self):
         # Find users with 'Travel Consultant' role
-        consultants = frappe.get_all('Has Role', 
-            filters={'role': 'Travel Consultant'}, 
+        consultants = frappe.get_all('Has Role',
+            filters={'role': 'Travel Consultant'},
             pluck='parent'
         )
         if not consultants:
@@ -23,7 +23,7 @@ class TravelLead(Document):
                 'status': 'Open'
             })
             loads.append((c, count))
-        
+
         # Sort by load and pick the one with minimum
         if loads:
             self.db_set('assigned_consultant', min(loads, key=lambda x: x[1])[0])
@@ -36,8 +36,8 @@ class TravelLead(Document):
         booking.total_pax = self.pax_count or 1
         booking.sales_consultant = self.assigned_consultant
         booking.insert(ignore_permissions=True)
-        
+
         self.db_set('status', 'converted')
         self.db_set('converted_booking', booking.name)
-        
+
         return booking.name

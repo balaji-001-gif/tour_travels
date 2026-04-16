@@ -9,6 +9,7 @@
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
+ "has_web_view": 1,
  "field_order": [
   "customer",
   "customer_mobile",
@@ -166,6 +167,27 @@
    "share": 1,
    "submit": 1,
    "write": 1
+  },
+  {
+   "read": 1,
+   "email": 1,
+   "print": 1,
+   "role": "Customer"
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "email": 1,
+   "print": 1,
+   "submit": 1,
+   "role": "Travel Admin"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "email": 1,
+   "role": "Travel Consultant"
   }
  ],
  "sort_field": "modified",

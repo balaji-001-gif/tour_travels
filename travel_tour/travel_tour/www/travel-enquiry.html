@@ -1,0 +1,651 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Register Your Travel Interest | Travel Tour{% endblock %}
+
+{% block head_include %}
+<meta name="description" content="Tell us your dream destination. Register your interest and our consultants will reach out to plan the perfect trip for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0a0e1a;
+    --bg-card: rgba(255,255,255,0.04);
+    --bg-card-hover: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.10);
+    --border-focus: rgba(99,179,237,0.6);
+    --gold: #f0b429;
+    --gold-light: #ffd764;
+    --teal: #38bdf8;
+    --teal-light: #7dd3fc;
+    --green: #34d399;
+    --text-primary: #f0f4f8;
+    --text-secondary: rgba(240,244,248,0.60);
+    --text-muted: rgba(240,244,248,0.38);
+    --gradient-hero: linear-gradient(135deg, #0a0e1a 0%, #0c1a2e 50%, #0a1628 100%);
+    --gradient-gold: linear-gradient(135deg, #f0b429, #e8870a);
+    --gradient-teal: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    --shadow-card: 0 24px 48px rgba(0,0,0,0.5);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+
+  /* ── Hero Section ── */
+  .enq-hero {
+    position: relative;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    overflow: hidden;
+    background: var(--gradient-hero);
+  }
+
+  .enq-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 30%, rgba(56,189,248,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 70%, rgba(240,180,41,0.10) 0%, transparent 60%);
+  }
+
+  .hero-orbit {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(56,189,248,0.12);
+    animation: rotate 30s linear infinite;
+  }
+  .hero-orbit:nth-child(1) { width: 500px; height: 500px; top: -200px; right: -150px; }
+  .hero-orbit:nth-child(2) { width: 300px; height: 300px; bottom: -100px; left: -80px; animation-direction: reverse; animation-duration: 20s; }
+
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(240,180,41,0.15);
+    border: 1px solid rgba(240,180,41,0.30);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #f0f4f8 30%, var(--teal-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── Destinations Strip ── */
+  .dest-strip {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dest-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+  }
+
+  .dest-chip:hover {
+    background: rgba(56,189,248,0.10);
+    border-color: rgba(56,189,248,0.30);
+    color: var(--teal-light);
+    transform: translateY(-2px);
+  }
+
+  /* ── Main Layout ── */
+  .enq-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .enq-main { grid-template-columns: 1fr; }
+    .enq-sidebar { display: none; }
+  }
+
+  /* ── Form Card ── */
+  .enq-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(12px);
+  }
+
+  .form-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+
+  .form-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 32px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .form-control {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  }
+
+  .form-control::placeholder { color: var(--text-muted); }
+
+  .form-control:focus {
+    border-color: var(--border-focus);
+    background: rgba(56,189,248,0.05);
+    box-shadow: 0 0 0 3px rgba(56,189,248,0.10);
+  }
+
+  select.form-control option { background: #131c30; }
+
+  textarea.form-control { resize: vertical; min-height: 100px; }
+
+  /* ── Interest Tags ── */
+  .interest-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .interest-tag {
+    cursor: pointer;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+
+  .interest-tag:hover { background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.25); }
+  .interest-tag.selected {
+    background: rgba(56,189,248,0.15);
+    border-color: rgba(56,189,248,0.50);
+    color: var(--teal-light);
+  }
+
+  /* ── Submit Button ── */
+  .btn-submit {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-submit::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(240,180,41,0.40); }
+  .btn-submit:hover::after { left: 100%; }
+  .btn-submit:active { transform: translateY(0); }
+
+  .btn-submit.loading { opacity: 0.8; pointer-events: none; }
+
+  /* ── Divider ── */
+  .form-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .form-divider::before, .form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .login-link-row {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .login-link-row a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .login-link-row a:hover { color: var(--teal-light); }
+
+  /* ── Sidebar ── */
+  .enq-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+  .info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: background 0.25s, transform 0.25s;
+  }
+
+  .info-card:hover { background: var(--bg-card-hover); transform: translateY(-3px); }
+
+  .info-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .info-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .info-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+  .steps-card { padding: 28px; }
+  .steps-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
+
+  .step-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .step-num {
+    min-width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(240,180,41,0.15);
+    border: 1px solid rgba(240,180,41,0.30);
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-text strong { display: block; font-size: 14px; margin-bottom: 3px; }
+  .step-text span { font-size: 12px; color: var(--text-muted); }
+
+  /* ── Success State ── */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .success-icon {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(52,211,153,0.15);
+    border: 2px solid rgba(52,211,153,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 24px;
+    animation: pulseGreen 1.5s ease infinite;
+  }
+
+  @keyframes pulseGreen {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0.3); }
+    50% { box-shadow: 0 0 0 16px rgba(52,211,153,0); }
+  }
+
+  .success-state h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+  .success-state p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .success-ref {
+    display: inline-block;
+    margin: 16px auto;
+    background: rgba(52,211,153,0.1);
+    border: 1px solid rgba(52,211,153,0.25);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .alert-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    display: none;
+  }
+  .alert-msg.error {
+    background: rgba(248,113,113,0.12);
+    border: 1px solid rgba(248,113,113,0.3);
+    color: #fca5a5;
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+<!-- Hero -->
+<section class="enq-hero">
+  <div class="hero-orbit"></div>
+  <div class="hero-orbit"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✈️ Your Journey Begins Here</div>
+    <h1 class="hero-title">Tell Us Your Dream Destination</h1>
+    <p class="hero-sub">
+      Register your travel interest — no account needed. Our consultants will craft a personalised plan just for you.
+    </p>
+  </div>
+</section>
+
+<!-- Destinations Strip -->
+<div class="dest-strip">
+  <div class="dest-chip">🗼 Paris</div>
+  <div class="dest-chip">🏝️ Bali</div>
+  <div class="dest-chip">🏔️ Switzerland</div>
+  <div class="dest-chip">🗽 New York</div>
+  <div class="dest-chip">🦁 Kenya Safari</div>
+  <div class="dest-chip">🍜 Thailand</div>
+  <div class="dest-chip">🌸 Japan</div>
+  <div class="dest-chip">🏟️ Dubai</div>
+</div>
+
+<!-- Main -->
+<div class="enq-main">
+  <!-- Form -->
+  <div class="enq-form-card" id="formWrapper">
+    <div class="alert-msg error" id="errorMsg"></div>
+
+    <div id="formView">
+      <h2 class="form-heading">Register Your Interest</h2>
+      <p class="form-sub">Fill the form below. No login required — we'll contact you shortly.</p>
+
+      <form id="enquiryForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name *</label>
+            <input class="form-control" type="text" id="fullName" placeholder="e.g. Ramesh Kumar" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mobileNo">Mobile Number *</label>
+            <input class="form-control" type="tel" id="mobileNo" placeholder="+91 98765 43210" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="emailId">Email Address *</label>
+            <input class="form-control" type="email" id="emailId" placeholder="you@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="paxCount">Number of Travellers *</label>
+            <input class="form-control" type="number" id="paxCount" min="1" max="50" placeholder="e.g. 2" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="tourPackage">Interested Package</label>
+            <select class="form-control" id="tourPackage">
+              <option value="">-- Select if you have one in mind --</option>
+              {% for pkg in packages %}
+              <option value="{{ pkg.name }}">{{ pkg.package_name }} ({{ pkg.tour_type }})</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="travelMonth">Preferred Travel Month</label>
+            <select class="form-control" id="travelMonth">
+              <option value="">-- Select Month --</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">What are you looking for?</label>
+          <div class="interest-grid">
+            <div class="interest-tag" data-val="Beach & Relaxation">🏖️ Beach & Relax</div>
+            <div class="interest-tag" data-val="Adventure & Trekking">🧗 Adventure</div>
+            <div class="interest-tag" data-val="Cultural & Heritage">🏛️ Culture</div>
+            <div class="interest-tag" data-val="Honeymoon">💑 Honeymoon</div>
+            <div class="interest-tag" data-val="Family Trip">👨‍👩‍👧 Family</div>
+            <div class="interest-tag" data-val="Visa Assistance">🛂 With Visa Help</div>
+            <div class="interest-tag" data-val="Budget Travel">💰 Budget</div>
+            <div class="interest-tag" data-val="Luxury Travel">✨ Luxury</div>
+          </div>
+          <input type="hidden" id="interestTags">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Additional Message</label>
+          <textarea class="form-control" id="message" placeholder="Tell us more — any special requirements, destinations dreamed of, budget range..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <span>✈️ Submit My Interest</span>
+        </button>
+      </form>
+
+      <div class="form-divider">Already have a booking?</div>
+      <div class="login-link-row">
+        <a href="/login?redirect-to=/my-portal">Login to Your Customer Portal →</a>
+      </div>
+    </div>
+
+    <!-- Success State -->
+    <div class="success-state" id="successView">
+      <div class="success-icon">✅</div>
+      <h3>You're on our radar!</h3>
+      <p>Your travel interest has been registered. Our consultant will reach out within 24 hours to plan your perfect trip.</p>
+      <div class="success-ref" id="leadRef"></div>
+      <p style="margin-top:12px; font-size:13px;">
+        Once your booking is confirmed, you'll receive login credentials to access the
+        <a href="/my-portal" style="color: var(--teal); font-weight:600;">Customer Portal</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="enq-sidebar">
+    <div class="info-card steps-card">
+      <h4>🗺️ How It Works</h4>
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>Submit Interest</strong>
+          <span>Fill this form — takes 2 minutes, no account needed.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>Consultant Calls</strong>
+          <span>Our expert will call you within 24 hours to understand your needs.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>Get a Tailored Quote</strong>
+          <span>We curate an itinerary and pricing just for your group.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <strong>Confirm & Portal Access</strong>
+          <span>After booking, you get access to your personal portal to track everything.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon" style="background: rgba(56,189,248,0.12);">🛂</div>
+      <h4>Visa Assistance</h4>
+      <p>We handle visa applications for 40+ countries. Track your visa status end-to-end through your portal once confirmed.</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon" style="background: rgba(240,180,41,0.12);">🔒</div>
+      <h4>Your Data is Safe</h4>
+      <p>We only use your information to plan your trip and will never share it with third parties without consent.</p>
+    </div>
+  </aside>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  // Interest tags
+  document.querySelectorAll('.interest-tag').forEach(tag => {
+    tag.addEventListener('click', () => {
+      tag.classList.toggle('selected');
+      updateInterestTags();
+    });
+  });
+
+  function updateInterestTags() {
+    const selected = [...document.querySelectorAll('.interest-tag.selected')]
+      .map(t => t.dataset.val).join(', ');
+    document.getElementById('interestTags').value = selected;
+  }
+
+  // Form submit
+  document.getElementById('enquiryForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const errorEl = document.getElementById('errorMsg');
+
+    btn.classList.add('loading');
+    btn.innerHTML = '<span>Submitting...</span>';
+    errorEl.style.display = 'none';
+
+    const payload = {
+      full_name:       document.getElementById('fullName').value.trim(),
+      mobile_no:       document.getElementById('mobileNo').value.trim(),
+      email_id:        document.getElementById('emailId').value.trim(),
+      pax_count:       parseInt(document.getElementById('paxCount').value) || 1,
+      suggested_package: document.getElementById('tourPackage').value,
+      preferred_month: document.getElementById('travelMonth').value,
+      interest_tags:   document.getElementById('interestTags').value,
+      message:         document.getElementById('message').value.trim(),
+      source:          'Website',
+    };
+
+    try {
+      const res = await fetch('/api/method/travel_tour.api.portal.submit_enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Frappe-CSRF-Token': frappe.csrf_token },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+
+      if (data.message && data.message.status === 'success') {
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+        document.getElementById('leadRef').textContent = '🎫 Ref: ' + data.message.lead_id;
+      } else {
+        throw new Error(data.message?.msg || 'Submission failed. Please try again.');
+      }
+    } catch (err) {
+      errorEl.textContent = err.message;
+      errorEl.style.display = 'block';
+      btn.classList.remove('loading');
+      btn.innerHTML = '<span>✈️ Submit My Interest</span>';
+    }
+  });
+</script>
+{% endblock %}

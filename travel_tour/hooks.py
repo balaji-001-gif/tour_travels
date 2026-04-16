@@ -80,5 +80,30 @@ fixtures = [
     {'dt': 'Visa Country Config'},
 ]
 
+# ── Web Portal ─────────────────────────────────────────────
+portal_menu_items = [
+    {
+        'title': 'My Travel Portal',
+        'route': '/my-portal',
+        'reference_doctype': 'Booking',
+        'role': 'Customer',
+    },
+    {
+        'title': 'Register Travel Interest',
+        'route': '/travel-enquiry',
+        'reference_doctype': '',
+        'role': '',
+    },
+]
+
+website_route_rules = [
+    {'from_route': '/my-portal', 'to_route': 'my-portal'},
+    {'from_route': '/travel-enquiry', 'to_route': 'travel-enquiry'},
+]
+
+has_website_permission = {
+    'Booking': 'travel_tour.api.portal.has_booking_permission',
+}
+
 # ── Workspace ───────────────────────────────────────────────
 # Workspace is usually defined via JSON in doctype/workspace

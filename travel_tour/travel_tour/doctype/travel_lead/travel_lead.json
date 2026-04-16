@@ -10,6 +10,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "full_name",
   "customer",
   "email_id",
   "mobile_no",
@@ -17,31 +18,40 @@
   "suggested_package",
   "pax_count",
   "column_break_7",
+  "preferred_month",
   "source",
   "assigned_consultant",
   "status",
   "section_break_11",
+  "interest_tags",
+  "remarks",
+  "section_break_conv",
   "converted_booking"
  ],
  "fields": [
   {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
    "fieldname": "customer",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Customer",
    "options": "Customer"
   },
   {
    "fieldname": "email_id",
    "fieldtype": "Data",
-   "label": "Email ID",
-   "fetch_from": "customer.email_id"
+   "label": "Email ID"
   },
   {
    "fieldname": "mobile_no",
    "fieldtype": "Data",
    "label": "Mobile No",
-   "fetch_from": "customer.mobile_no"
+   "in_list_view": 1
   },
   {
    "fieldname": "section_break_4",
@@ -61,6 +71,11 @@
   {
    "fieldname": "column_break_7",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "preferred_month",
+   "fieldtype": "Data",
+   "label": "Preferred Travel Month"
   },
   {
    "fieldname": "source",
@@ -85,7 +100,23 @@
   },
   {
    "fieldname": "section_break_11",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Enquiry Notes"
+  },
+  {
+   "fieldname": "interest_tags",
+   "fieldtype": "Data",
+   "label": "Interest Tags"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks / Notes"
+  },
+  {
+   "fieldname": "section_break_conv",
+   "fieldtype": "Section Break",
+   "label": "Conversion"
   },
   {
    "fieldname": "converted_booking",
@@ -113,6 +144,21 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "role": "Guest"
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "write": 1,
+   "role": "Travel Admin"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "role": "Travel Consultant"
   }
  ],
  "sort_field": "modified",
