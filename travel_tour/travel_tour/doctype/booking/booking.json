@@ -9,7 +9,6 @@
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
- "has_web_view": 1,
  "field_order": [
   "customer",
   "customer_mobile",
