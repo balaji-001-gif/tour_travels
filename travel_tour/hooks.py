@@ -96,11 +96,6 @@ portal_menu_items = [
     },
 ]
 
-website_route_rules = [
-    {'from_route': '/my-portal', 'to_route': 'my-portal'},
-    {'from_route': '/travel-enquiry', 'to_route': 'travel-enquiry'},
-]
-
 has_website_permission = {
     'Booking': 'travel_tour.api.portal.has_booking_permission',
 }
